@@ -40,6 +40,9 @@ import DictData from '@/components/DictData'
 
 import Tinymce from '@/components/tinymce/index.vue'
 
+// 在vue中生成条形码的插件
+import VueBarcode from "vue-barcode";
+
 
 
 
@@ -63,6 +66,7 @@ Vue.component('FileUpload', FileUpload)
 Vue.component('ImageUpload', ImageUpload)
 Vue.component('ImagePreview', ImagePreview)
 Vue.component('tinymce', Tinymce)
+Vue.component('barcode', VueBarcode);
 
 Vue.use(directive)
 Vue.use(plugins)

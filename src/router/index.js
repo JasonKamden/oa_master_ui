@@ -70,7 +70,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/index'),
         name: 'Index',
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: {title: '首页', icon: 'dashboard', affix: true}
       }
     ]
   },
@@ -84,7 +84,37 @@ export const constantRoutes = [
         path: 'profile',
         component: () => import('@/views/system/user/profile/index'),
         name: 'Profile',
-        meta: { title: '个人中心', icon: 'user' }
+        meta: {title: '个人中心', icon: 'user'}
+      }
+    ]
+  },
+  // **********************新增********************8
+  {
+    path: '/office/meeting-user',
+    component: Layout,
+    hidden: true,
+    permissions: ['system:dict:list'],
+    children: [
+      {
+        path: 'index/:meetingId(\\d+)',
+        component: () => import('@/views/office/meeting/user/index'),
+        name: 'Data',
+        meta: {title: '会议用户', activeMenu: '/office/meeting/apply'}
+      }
+    ]
+  },
+
+  {
+    path: '/office/meeting-notes',
+    component: Layout,
+    hidden: true,
+    permissions: ['system:dict:list'],
+    children: [
+      {
+        path: 'index/:meetingId(\\d+)',
+        component: () => import('@/views/office/meeting/notes/index'),
+        name: 'Data',
+        meta: {title: '会议纪要', activeMenu: '/office/meeting/apply'}
       }
     ]
   },
@@ -97,7 +127,7 @@ export const constantRoutes = [
         path: 'definition/model/',
         component: () => import('@/views/flowable/definition/model'),
         name: 'Model',
-        meta: { title: '流程设计', icon: '' }
+        meta: {title: '流程设计', icon: ''}
       }
     ]
   },
@@ -110,7 +140,7 @@ export const constantRoutes = [
         path: 'task/finished/detail/index',
         component: () => import('@/views/flowable/task/finished/detail/index'),
         name: 'FinishedRecord',
-        meta: { title: '流程详情', icon: '' }
+        meta: {title: '流程详情', icon: ''}
       }
     ]
   },
@@ -123,7 +153,7 @@ export const constantRoutes = [
         path: 'task/myProcess/detail/index',
         component: () => import('@/views/flowable/task/myProcess/detail/index'),
         name: 'MyProcessRecord',
-        meta: { title: '流程详情', icon: '' }
+        meta: {title: '流程详情', icon: ''}
       }
     ]
   },
@@ -136,7 +166,7 @@ export const constantRoutes = [
         path: 'task/myProcess/send/index',
         component: () => import('@/views/flowable/task/myProcess/send/index'),
         name: 'SendRecord',
-        meta: { title: '流程发起', icon: '' }
+        meta: {title: '流程发起', icon: ''}
       }
     ]
   },
@@ -149,7 +179,7 @@ export const constantRoutes = [
         path: 'task/todo/detail/index',
         component: () => import('@/views/flowable/task/todo/detail/index'),
         name: 'TodoRecord',
-        meta: { title: '流程处理', icon: '' }
+        meta: {title: '流程处理', icon: ''}
       }
     ]
   },
@@ -162,7 +192,7 @@ export const constantRoutes = [
         path: 'build/index',
         component: () => import('@/views/tool/build/index'),
         name: 'FormBuild',
-        meta: { title: '表单配置', icon: '' }
+        meta: {title: '表单配置', icon: ''}
       }
     ]
   },
@@ -180,7 +210,7 @@ export const dynamicRoutes = [
         path: 'role/:userId(\\d+)',
         component: () => import('@/views/system/user/authRole'),
         name: 'AuthRole',
-        meta: { title: '分配角色', activeMenu: '/system/user' }
+        meta: {title: '分配角色', activeMenu: '/system/user'}
       }
     ]
   },
@@ -194,7 +224,7 @@ export const dynamicRoutes = [
         path: 'user/:roleId(\\d+)',
         component: () => import('@/views/system/role/authUser'),
         name: 'AuthUser',
-        meta: { title: '分配用户', activeMenu: '/system/role' }
+        meta: {title: '分配用户', activeMenu: '/system/role'}
       }
     ]
   },
@@ -208,7 +238,7 @@ export const dynamicRoutes = [
         path: 'index/:dictId(\\d+)',
         component: () => import('@/views/system/dict/data'),
         name: 'Data',
-        meta: { title: '字典数据', activeMenu: '/system/dict' }
+        meta: {title: '字典数据', activeMenu: '/system/dict'}
       }
     ]
   },
@@ -222,7 +252,7 @@ export const dynamicRoutes = [
         path: 'index/:jobId(\\d+)',
         component: () => import('@/views/monitor/job/log'),
         name: 'JobLog',
-        meta: { title: '调度日志', activeMenu: '/monitor/job' }
+        meta: {title: '调度日志', activeMenu: '/monitor/job'}
       }
     ]
   },
@@ -236,7 +266,7 @@ export const dynamicRoutes = [
         path: 'index/:tableId(\\d+)',
         component: () => import('@/views/tool/gen/editTable'),
         name: 'GenEdit',
-        meta: { title: '修改生成配置', activeMenu: '/tool/gen' }
+        meta: {title: '修改生成配置', activeMenu: '/tool/gen'}
       }
     ]
   }
@@ -250,6 +280,6 @@ Router.prototype.push = function push(location) {
 
 export default new Router({
   mode: 'history', // 去掉url中的#
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({y: 0}),
   routes: constantRoutes
 })
