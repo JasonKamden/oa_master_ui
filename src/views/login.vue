@@ -49,7 +49,11 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2018-2023 ruoyi.vip All Rights Reserved.</span>
+      <span>Copyright © 2022-2023 kiti.club All Rights Reserved.</span>
+      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45092102000192" target="_blank">
+        <img src="../assets/images/ba.png">   桂公网安备 45092102000192号
+      </a>
+      <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2022006918号-1</a>
     </div>
   </div>
 </template>
