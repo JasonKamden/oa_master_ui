@@ -48,6 +48,7 @@ import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
 import RuoYiGit from '@/components/RuoYi/Git'
 import RuoYiDoc from '@/components/RuoYi/Doc'
+import settings from "@/settings";
 
 export default {
   components: {
@@ -94,7 +95,9 @@ export default {
         type: 'warning'
       }).then(() => {
         this.$store.dispatch('LogOut').then(() => {
-          location.href = '/index';
+          if (!settings.casEnable) {
+            location.href = this.$router.options.base + "/index"
+          }
         })
       }).catch(() => {});
     }

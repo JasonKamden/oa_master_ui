@@ -40,5 +40,21 @@ module.exports = {
    * The default is only used in the production env
    * If you want to also use it in dev, you can pass ['production', 'development']
    */
-  errorLog: 'production'
+  errorLog: 'production',
+
+  /**
+   * 开启cas
+   */
+  casEnable: true,
+
+  /**
+   * 单点登录url
+   */
+  casloginUrl: 'https://cas.kiti.club/cas/login?service=http://localhost:8080',
+
+  /**
+   * 单点登出url
+   */
+  caslogoutUrl: 'https://cas.kiti.club/cas/logout?service=http://localhost:8080'
+
 }

@@ -1,6 +1,6 @@
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
-
+const defaultSettings = require('@/settings')
 const user = {
   state: {
     token: getToken(),
@@ -76,6 +76,7 @@ const user = {
           commit('SET_PERMISSIONS', [])
           removeToken()
           resolve()
+          window.location.href = defaultSettings.caslogoutUrl
         }).catch(error => {
           reject(error)
         })
