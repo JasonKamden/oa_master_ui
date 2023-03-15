@@ -42,3 +42,10 @@ export function delManage(fileId) {
     method: 'delete'
   })
 }
+
+export function downloadFile(fileId) {
+  return request({
+    url: '/file/manage/downloadFile/' + fileId,
+    method: 'post'
+  })
+}

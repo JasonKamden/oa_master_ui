@@ -9,22 +9,22 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <!--      <el-form-item label="文件后缀" prop="fileSuffix">-->
-      <!--        <el-input-->
-      <!--          v-model="queryParams.fileSuffix"-->
-      <!--          placeholder="请输入文件后缀"-->
-      <!--          clearable-->
-      <!--          @keyup.enter.native="handleQuery"-->
-      <!--        />-->
-      <!--      </el-form-item>-->
-      <!--      <el-form-item label="文件名" prop="fileName">-->
-      <!--        <el-input-->
-      <!--          v-model="queryParams.fileName"-->
-      <!--          placeholder="请输入文件名"-->
-      <!--          clearable-->
-      <!--          @keyup.enter.native="handleQuery"-->
-      <!--        />-->
-      <!--      </el-form-item>-->
+      <el-form-item label="文件后缀" prop="fileSuffix">
+        <el-input
+          v-model="queryParams.fileSuffix"
+          placeholder="请输入文件后缀"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <!--            <el-form-item label="文件名" prop="fileName">-->
+      <!--              <el-input-->
+      <!--                v-model="queryParams.fileName"-->
+      <!--                placeholder="请输入文件名"-->
+      <!--                clearable-->
+      <!--                @keyup.enter.native="handleQuery"-->
+      <!--              />-->
+      <!--            </el-form-item>-->
       <el-form-item label="是否私有" prop="isPrivate">
         <el-select v-model="queryParams.isPrivate" placeholder="请选择是否私有" clearable>
           <el-option
@@ -95,8 +95,8 @@
       <el-table-column type="selection" width="55" align="center"/>
       <!--      <el-table-column label="文件ID" align="center" prop="fileId" />-->
       <el-table-column label="原名" align="center" prop="originalName"/>
+      <!--      <el-table-column label="文件名" align="center" prop="fileName"/>-->
       <el-table-column label="文件后缀" align="center" prop="fileSuffix"/>
-      <el-table-column label="文件名" align="center" prop="fileName"/>
       <el-table-column label="文件路径" align="center" prop="filePath"/>
       <el-table-column label="是否私有" align="center" prop="isPrivate">
         <template slot-scope="scope">
@@ -106,14 +106,13 @@
       <el-table-column label="备注" align="center" prop="remark"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <!--          <el-button-->
-          <!--            size="mini"-->
-          <!--            type="text"-->
-          <!--            icon="el-icon-edit"-->
-          <!--            @click="handleUpdate(scope.row)"-->
-          <!--            v-hasPermi="['file:manage:edit']"-->
-          <!--          >修改-->
-          <!--          </el-button>-->
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-edit"
+            @click="handleDownload(scope.row)"
+          >下载
+          </el-button>
           <el-button
             size="mini"
             type="text"
@@ -137,15 +136,15 @@
     <!-- 添加或修改文件管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="原名" prop="originalName">
-          <el-input v-model="form.originalName" placeholder="请输入原名"/>
-        </el-form-item>
-        <el-form-item label="文件后缀" prop="fileSuffix">
-          <el-input v-model="form.fileSuffix" placeholder="请输入文件后缀"/>
-        </el-form-item>
-        <el-form-item label="文件名" prop="fileName">
-          <el-input v-model="form.fileName" placeholder="请输入文件名"/>
-        </el-form-item>
+        <!--        <el-form-item label="原名" prop="originalName">-->
+        <!--          <el-input v-model="form.originalName" placeholder="请输入原名"/>-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="文件后缀" prop="fileSuffix">-->
+        <!--          <el-input v-model="form.fileSuffix" placeholder="请输入文件后缀"/>-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="文件名" prop="fileName">-->
+        <!--          <el-input v-model="form.fileName" placeholder="请输入文件名"/>-->
+        <!--        </el-form-item>-->
         <el-form-item label="文件路径" prop="filePath">
           <file-upload v-model="form.filePath"/>
         </el-form-item>
@@ -172,7 +171,7 @@
 </template>
 
 <script>
-import { listManage, getManage, delManage, addManage, updateManage } from '@/api/file/manage'
+import {listManage, getManage, delManage, addManage, updateManage, downloadFile} from '@/api/file/manage'
 
 export default {
   name: 'Manage',
@@ -270,6 +269,12 @@ export default {
       this.open = true
       this.title = '添加文件管理'
     },
+    handleDownload(row) {
+      const fileId = row.fileId
+      this.download('/file/manage/downloadFile/' + fileId, {},
+        row.originalName + `_${new Date().getTime()}.` + row.fileSuffix
+      )
+    },
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset()
@@ -303,7 +308,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const fileIds = row.fileId || this.ids
-      this.$modal.confirm('是否确认删除文件管理编号为"' + fileIds + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除文件管理编号为"' + fileIds + '"的数据项？').then(function () {
         return delManage(fileIds)
       }).then(() => {
         this.getList()

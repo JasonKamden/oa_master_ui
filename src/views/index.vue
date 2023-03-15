@@ -67,15 +67,15 @@
             <p>
               <i class="el-icon-s-promotion"></i> 官网：
               <el-link
-                href="https://kiti.club"
+                href="https://oa.kiti.club"
                 target="_blank"
-              >https://kiti.club
+              >https://oa.kiti.club
               </el-link
               >
             </p>
             <p>
-              <i class="el-icon-user-solid"></i> QQ群：
-              <s>满104748341</s> <s>满160110482</s>
+              <i class="el-icon-user-solid"></i>
+                测试
             </p>
           </div>
         </el-card>
@@ -106,7 +106,7 @@
           <div class="body">
             <div v-for="notice in noticeList" :key="notice.noticeId" class="text item">
               <div class="cell el-tooltip row-cell" @click="handleQuery(notice.noticeId)">
-                {{notice.noticeTitle |ellipsis}}
+                {{ notice.noticeTitle |ellipsis }}
               </div>
             </div>
           </div>
@@ -153,9 +153,10 @@
 </template>
 
 <script>
-import { addAttend, getAttend, getDateList } from '@/api/office/attend'
-import { listNotice} from "@/api/system/notice";
+import {addAttend, getAttend, getDateList} from '@/api/office/attend'
+import {listNotice} from "@/api/system/notice";
 import VueBarcode from 'vue-barcode';
+
 export default {
   name: 'Index',
   data() {
@@ -165,11 +166,11 @@ export default {
       time: '',
       weekday: '',
       imgList: [
-        { id: 0, idView: require('@/assets/770_images/12.png') },
-        { id: 1, idView: require('@/assets/770_images/20.jpg') },
-        { id: 2, idView: require('@/assets/770_images/21.png') },
-        { id: 3, idView: require('@/assets/770_images/23.jpg') },
-        { id: 4, idView: require('@/assets/770_images/27.png') }
+        {id: 0, idView: require('@/assets/770_images/12.png')},
+        {id: 1, idView: require('@/assets/770_images/20.jpg')},
+        {id: 2, idView: require('@/assets/770_images/21.png')},
+        {id: 3, idView: require('@/assets/770_images/23.jpg')},
+        {id: 4, idView: require('@/assets/770_images/27.png')}
       ],
       week: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
       calendarValue: new Date(),
@@ -256,7 +257,7 @@ export default {
   mounted() {
 
     //设置时间
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       setInterval(this.updateTime, 1000)
     })
   },
@@ -307,8 +308,8 @@ export default {
     dealMyDate(v) {
       let res = ''
       this.potDate = [
-        { date: '2023-01-02' },
-        { date: '2023-01-22' }
+        {date: '2023-01-02'},
+        {date: '2023-01-22'}
       ]
       for (let i = 0; i < this.potDate.length; i++) {
         if (this.potDate[i].date === v) {
