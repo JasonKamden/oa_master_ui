@@ -162,15 +162,15 @@
         <el-form-item label="用户ID" prop="userId">
           <el-input v-model="form.userId" placeholder="请输入用户ID"/>
         </el-form-item>
-        <el-form-item label="用户昵称" prop="nickName">
-          <el-input v-model="form.nickName" placeholder="请输入用户昵称"/>
-        </el-form-item>
-        <el-form-item label="用户邮箱" prop="email">
-          <el-input v-model="form.email" placeholder="请输入用户邮箱"/>
-        </el-form-item>
-        <el-form-item label="手机号码" prop="phonenumber">
-          <el-input v-model="form.phonenumber" placeholder="请输入手机号码"/>
-        </el-form-item>
+<!--        <el-form-item label="用户昵称" prop="nickName">-->
+<!--          <el-input v-model="form.nickName" placeholder="请输入用户昵称"/>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="用户邮箱" prop="email">-->
+<!--          <el-input v-model="form.email" placeholder="请输入用户邮箱"/>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="手机号码" prop="phonenumber">-->
+<!--          <el-input v-model="form.phonenumber" placeholder="请输入手机号码"/>-->
+<!--        </el-form-item>-->
         <el-form-item prop="status">
           <el-radio-group v-model="form.status">
             <el-radio
@@ -234,9 +234,6 @@ export default {
       rules: {
         meetingId: [
           { required: true, message: '会议ID不能为空', trigger: 'blur' }
-        ],
-        nickName: [
-          { required: true, message: '用户昵称不能为空', trigger: 'blur' }
         ]
       }
     }
