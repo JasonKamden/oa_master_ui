@@ -96,7 +96,7 @@ export const constantRoutes = [
     permissions: ['system:dict:list'],
     children: [
       {
-        path: 'index/:meetingId(\\d+)',
+        path: 'index/:meetingId',
         component: () => import('@/views/office/meeting/user/index'),
         name: 'Data',
         meta: {title: '会议用户', activeMenu: '/office/meeting/apply'}
@@ -111,7 +111,7 @@ export const constantRoutes = [
     permissions: ['system:dict:list'],
     children: [
       {
-        path: 'index/:meetingId(\\d+)',
+        path: 'index/:meetingId',
         component: () => import('@/views/office/meeting/notes/index'),
         name: 'Data',
         meta: {title: '会议纪要', activeMenu: '/office/meeting/apply'}

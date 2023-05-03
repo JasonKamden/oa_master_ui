@@ -194,7 +194,7 @@
         <el-form-item label="手机号码" prop="chairUserPhone">
           <el-input v-model="formApply.chairUserPhone" placeholder="请输入手机号码"/>
         </el-form-item>
-        <el-form-item label="手机号码" prop="mail">
+        <el-form-item label="邮箱" prop="mail">
           <el-input v-model="formApply.mail" placeholder="请输入邮箱"/>
         </el-form-item>
         <el-form-item label="开始时间" prop="beginTime">

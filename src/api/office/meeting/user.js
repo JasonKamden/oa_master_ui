@@ -10,9 +10,9 @@ export function listUser(query) {
 }
 
 // 查询用户会议详细
-export function getUser(meetingId) {
+export function getUser(meetingId,userId) {
   return request({
-    url: '/meeting/user/' + meetingId,
+    url: '/meeting/user/' + meetingId + '/' + userId,
     method: 'get'
   })
 }
@@ -36,9 +36,9 @@ export function updateUser(data) {
 }
 
 // 删除用户会议
-export function delUser(meetingId) {
+export function delUser(meetingId, userIds) {
   return request({
-    url: '/meeting/user/' + meetingId,
+    url: '/meeting/user/del/' + meetingId + '/' + userIds,
     method: 'delete'
   })
 }
@@ -54,6 +54,24 @@ export function changeUserStatus(meetingId,userId, status) {
     url: '/meeting/user/changeStatus',
     method: 'put',
     data: data
+  })
+}
+
+
+// 查询角色未授权用户列表
+export function unallocatedUserList(query) {
+  return request({
+    url: '/meeting/user/unassigned/user',
+    method: 'get',
+    params: query
+  })
+}
+
+export function insertMeetingUsersByBatch(data) {
+  return request({
+    url: '/meeting/user/insertMeetingUsersByBatch',
+    method: 'put',
+    params: data
   })
 }
 

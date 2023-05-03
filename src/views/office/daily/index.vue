@@ -97,7 +97,7 @@
         </template>
       </el-table-column>
       <el-table-column label="任务描述" align="center" prop="taskDescription" />
-      <el-table-column label="成果/交付物" align="center" prop="taskDeliverables" />
+      <el-table-column label="成果" align="center" prop="taskDeliverables" />
       <el-table-column label="工时" align="center" prop="taskTime" />
       <el-table-column label="是否有效" align="center" prop="isEnabled">
         <template slot-scope="scope">
@@ -152,7 +152,7 @@
         <el-form-item label="任务描述" prop="taskDescription">
           <el-input v-model="form.taskDescription" type="textarea" placeholder="请输入内容" />
         </el-form-item>
-        <el-form-item label="成果/交付物" prop="taskDeliverables">
+        <el-form-item label="成果" prop="taskDeliverables">
           <el-input v-model="form.taskDeliverables" type="textarea" placeholder="请输入内容" />
         </el-form-item>
         <el-form-item label="工时" prop="taskTime">

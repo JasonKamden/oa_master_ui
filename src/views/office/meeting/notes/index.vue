@@ -78,15 +78,15 @@
         >导出
         </el-button>
       </el-col>
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="warning"-->
-<!--          plain-->
-<!--          icon="el-icon-close"-->
-<!--          size="mini"-->
-<!--          @click="handleClose"-->
-<!--        >关闭</el-button>-->
-<!--      </el-col>-->
+      <el-col :span="1.5">
+        <el-button
+          type="warning"
+          plain
+          icon="el-icon-close"
+          size="mini"
+          @click="handleClose"
+        >关闭</el-button>
+      </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -214,12 +214,13 @@ export default {
   methods: {
     // 返回按钮
     handleClose() {
-      const obj = { path: "/office/meeting-notes" };
+      const obj = { path: "/office/meeting/apply" };
       this.$tab.closeOpenPage(obj);
     },
     /** 查询会议纪要列表 */
     getList() {
       this.loading = true
+      this.queryParams.meetingId = this.$route.params && this.$route.params.meetingId;
       listNotes(this.queryParams).then(response => {
         this.notesList = response.rows
         this.total = response.total

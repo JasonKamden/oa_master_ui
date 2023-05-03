@@ -100,7 +100,7 @@
       <el-table-column label="会议主题" align="center" prop="subject">
         <template slot-scope="scope">
           <router-link :to="'/office/meeting-notes/index/' + scope.row.meetingId" class="link-type">
-            <span>{{ scope.row.useCapacity }}</span>
+            <span>{{ scope.row.subject}}</span>
           </router-link>
         </template>
       </el-table-column>

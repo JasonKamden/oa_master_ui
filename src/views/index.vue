@@ -353,9 +353,9 @@ export default {
       // })
       const username = this.$store.state.user.name
       getDateList(username).then(response => {
-        console.log('response' + response.data.DateList)
         this.dateList = response.data.DateList;
-        this.isNowDate = response.date.isNowDate;
+        console.log(response.data.isNowDate);
+        this.isNowDate = response.data.isNowDate;
         if (this.isNowDate) {
           this.signTitle = '已经签到';
         }
